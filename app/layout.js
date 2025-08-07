@@ -22,7 +22,7 @@ export const metadata = {
   title: "SecurePass",
   description: "Generated to save passwords",
   icons: {
-    icon: "/favicon.png", // path to your .png favicon in public
+    icon: "/favicon.png", 
   },
 };
 
@@ -46,4 +46,3 @@ export default function RootLayout({ children }) {
     </ClerkProvider>
   );
 }
-?
