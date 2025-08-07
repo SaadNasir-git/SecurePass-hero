@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image"; 
 
 export default function Home() {
   return (
@@ -22,7 +23,13 @@ export default function Home() {
         <div className="w-full max-w-4xl mx-4 bg-white p-8 sm:p-12 rounded-2xl shadow-lg text-center space-y-8" style={{ paddingBottom: "100px" }}>
           <div className="space-y-2">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-              <span className="text-3xl">🔐</span>
+              <Image 
+                src="/icons8-locked-with-key-50.png"
+                alt="Secure Lock Icon"
+                width={32}
+                height={32}
+                priority
+              />
             </div>
             <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">
               SecurePass
