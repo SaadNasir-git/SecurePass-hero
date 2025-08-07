@@ -202,7 +202,6 @@ const PasswordManager = () => {
           )}
           <div className="absolute inset-0 -z-10 h-full w-full bg-green-50 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
             <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-green-400 opacity-20 blur-[100px]"></div>
-          </div>
 
           <article className="p-3 min-h-[80.7vh] w-full text-center">
             <h1 className="text-4xl font-bold mb-2">
@@ -210,7 +209,7 @@ const PasswordManager = () => {
               <span>Secure</span>
               <span className="text-green-500">PASS/&gt;</span>
             </h1>
-            <p className="text-gray-600 mb-6">Your secure password management solution</p>
+            <p className="text-gray-600">Your secure password management solution</p>
             
             <section aria-labelledby="password-form-heading">
               <h2 id="password-form-heading" className="sr-only">Password Entry Form</h2>
@@ -455,6 +454,7 @@ const PasswordManager = () => {
             )}
           </article>
         </div>
+      </div>
       </main>
     </>
   );
