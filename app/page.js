@@ -15,7 +15,7 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* <link rel="canonical" href="https://yourdomain.com" /> */}
+        <link rel="canonical" href="https://secure-pass-hero.com" />
       </Head>
 
       <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-gray-50">
