@@ -19,7 +19,8 @@ export default function Home() {
       </Head>
 
       <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-gray-50">
-        <div className="w-full max-w-4xl mx-4 bg-white p-8 sm:p-12 rounded-2xl shadow-lg text-center space-y-8 pb-[100px]">
+        <div className="w-full max-w-4xl mx-4 bg-white p-8 sm:p-12 rounded-2xl shadow-lg text-center space-y-8" style="
+            padding-bottom: 100px;">
           <div className="space-y-2">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
               <span className="text-3xl">🔐</span>
