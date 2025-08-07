@@ -1,6 +1,8 @@
-import { GeistSans as Geist, GeistMono as Geist_Mono } from "next/font/google";
-import { ClerkProvider } from '@clerk/nextjs';
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Geist, Geist_Mono } from "next/font/google";
+import {
+  ClerkProvider,
+} from '@clerk/nextjs'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
@@ -20,7 +22,7 @@ export const metadata = {
   title: "SecurePass",
   description: "Generated to save passwords",
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.png", // path to your .png favicon in public
   },
 };
 
@@ -32,13 +34,16 @@ export default function RootLayout({ children }) {
           <link rel="icon" type="image/png" href="/favicon.png" />
           <title>SecurePass</title>
         </Head>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
           <Navbar />
           {children}
           <Footer />
-          <SpeedInsights /> 
         </body>
+      <SpeedInsights />
       </html>
     </ClerkProvider>
   );
 }
+?
