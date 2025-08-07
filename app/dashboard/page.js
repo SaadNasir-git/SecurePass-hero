@@ -186,7 +186,7 @@ const PasswordManager = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Secure Password Manager | PassOP" />
         <meta name="twitter:description" content="The safest way to store and manage all your passwords in one secure place." />
-        {/* <link rel="canonical" href="https://yourdomain.com/password-manager" /> */}
+        <link rel="canonical" href="https://secure-pass-hero.vercel.app/dashboard" />
       </Head>
       <main className="overflow-x-hidden w-full h-full">
         {user && <Bar setshowpopup={setshowpopup} />}
