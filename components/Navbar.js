@@ -14,7 +14,7 @@ const Navbar = () => {
                     </div>
                 </Link>
                 
-                <a 
+        {/*  <a 
                     target='_blank' 
                     rel="noopener noreferrer" 
                     href='https://github.com/SaadNasir-git' 
@@ -33,7 +33,7 @@ const Navbar = () => {
                     <span className='font-semibold px-2 pr-3 text-sm sm:text-base hidden sm:inline'>
                         GitHub
                     </span>
-                </a>
+                </a> */}
             </div>
         </nav>
     )
