@@ -8,7 +8,7 @@ const DB_NAME = "passop";
 const COLLECTION_NAME = "passwords";
 
 export function getEncrypted(object: data, key: string) {
-    object.siteUrl = pass.encrypt(object.siteUrl, key);
+    object.site = pass.encrypt(object.site, key);
     object.username = pass.encrypt(object.username, key);
     object.password = pass.encrypt(object.password, key);
     return object;
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
                 const id = element._id.toString();
-                const site = pass.decrypt(element.siteUrl, oldPassword);
+                const site = pass.decrypt(element.site, oldPassword);
                 const username = pass.decrypt(element.username, oldPassword);
                 const key = pass.decrypt(element.password, oldPassword);
                 if (!key.isValid) {
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
                 } else {
                     const data:data = {
                         password:key.result,
-                        siteUrl:site.result,
+                        site:site.result,
                         username:username.result
                     }
                     const update = getEncrypted(data , newPassword)

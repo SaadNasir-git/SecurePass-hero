@@ -3,7 +3,7 @@ export {}
 declare global {
     interface data {
         id?: string;
-        siteUrl: string;
+        site: string;
         username: string;
         password: string;
     }

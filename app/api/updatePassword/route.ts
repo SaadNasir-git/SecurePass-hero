@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
         const { object, password } = await request.json()
         const { userId } = await auth();
 
-        if (!object.id || !object.username || !object.siteUrl || !object.password || !userId) {
+        if (!object.id || !object.username || !object.site || !object.password || !userId) {
             return NextResponse.json({
                 message: 'Data is required'
             }, { status: 400 })

@@ -12,16 +12,22 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { Eye, EyeClosed , Plus } from 'lucide-react'
+import { Eye, EyeClosed, Plus } from 'lucide-react'
 import React, { useState, useEffect, SetStateAction } from 'react'
 import { toast } from 'react-toastify'
 import axios, { AxiosError } from 'axios'
-// import { savepassword, handleUpdate } from '@/actions/route'
+
+const initial = {
+  id: '',
+  site: '',
+  username: '',
+  password: ''
+}
 
 // Form schema with validation
 const formSchema = z.object({
   id: z.string().optional(),
-  siteUrl: z.string().url({ message: 'Please enter a valid URL' }),
+  site: z.string().url({ message: 'Please enter a valid URL' }),
   username: z.string().min(2, { message: 'Username must be at least 2 characters' }),
   password: z.string().min(8, { message: 'Password must be at least 8 characters' })
 })
@@ -31,7 +37,7 @@ type FormData = z.infer<typeof formSchema>
 interface PasswordFormProps {
   formData: {
     id?: string
-    siteUrl: string
+    site: string
     username: string
     password: string
   }
@@ -56,7 +62,7 @@ export default function PasswordForm({
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      siteUrl: formData.siteUrl,
+      site: formData.site,
       username: formData.username,
       password: formData.password
     }
@@ -66,7 +72,7 @@ export default function PasswordForm({
   useEffect(() => {
     form.reset({
       id: formData.id,
-      siteUrl: formData.siteUrl,
+      site: formData.site,
       username: formData.username,
       password: formData.password
     })
@@ -82,24 +88,21 @@ export default function PasswordForm({
     try {
       if (data.id) {
         axios.post('/api/updatePassword', { object: data, password: encryptionPassword })
-        form.reset({
-          siteUrl: '',
-          username: '',
-          password: ''
-        })
-        setPassword([...passwords, { password: data.password, siteUrl: data.siteUrl, username: data.username, id: data.id }])
+        form.reset(initial)
+        setFormData(initial)
+        setPassword([...passwords, { password: data.password, site: data.site, username: data.username, id: data.id }])
         toast.success('Password has been updated successfully')
         return
       }
-      if (!data.password || !data.siteUrl || !data.username) {
+      if (!data.password || !data.site || !data.username) {
         toast.error('All data is required')
         return
       }
       setIsSubmitting(true)
-      const res = await axios.post('/api/savepassword', { username: data.username, siteUrl: data.siteUrl, password: data.password, key: encryptionPassword })
+      const res = await axios.post('/api/savepassword', { username: data.username, site: data.site, password: data.password, key: encryptionPassword })
       if (res.status == 200) {
-        setPassword([...passwords, { password: data.password, siteUrl: data.siteUrl, username: data.username, id: res.data.id }])
-        form.reset()
+        setPassword([...passwords, { password: data.password, site: data.site, username: data.username, id: res.data.id }])
+        form.reset(initial)
         toast.success(res.data.message)
       }
     } catch (error) {
@@ -117,7 +120,7 @@ export default function PasswordForm({
         {/* Website URL Field */}
         <FormField
           control={form.control}
-          name="siteUrl"
+          name="site"
           render={({ field }) => (
             <FormItem>
               <label htmlFor="site" className="sr-only">Website URL</label>
@@ -210,7 +213,7 @@ export default function PasswordForm({
           disabled={isLoading || isSubmitting || !encryptionPassword}
           className="disabled:bg-slate-700 disabled:cursor-not-allowed flex items-center gap-1.5 bg-green-500 w-max py-1 px-4 rounded-full mx-auto mt-5 cursor-pointer"
         >
-          <Plus width={30} height={30}/>
+          <Plus width={30} height={30} />
           <span className="font-bold text-white">
             {isSubmitting ? "Processing..." : formData.id ? "Update" : "Save"}
           </span>

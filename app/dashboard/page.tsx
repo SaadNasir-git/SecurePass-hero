@@ -12,7 +12,7 @@ import axios from "axios";
 const Home = () => {
     const [FormData, setFormData] = useState<data>(
         {
-            siteUrl: '',
+            site: '',
             username: '',
             password: ''
         });

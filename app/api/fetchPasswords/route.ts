@@ -31,14 +31,14 @@ export async function POST(request: NextRequest) {
         for (let index = 0; index < passwords.length; index++) {
             const element = passwords[index];
             const id = element._id.toString();
-            const site = pass.decrypt(element.siteUrl, password);
+            const site = pass.decrypt(element.site, password);
             const username = pass.decrypt(element.username, password);
             const key = pass.decrypt(element.password, password);
             if (!key.isValid) {
                 isCorrect = false
                 break;
             } else {
-                decryptedPasswords.push({ id, siteUrl: site.result, username: username.result, password: key.result });
+                decryptedPasswords.push({ id, site: site.result, username: username.result, password: key.result });
             }
         }
 

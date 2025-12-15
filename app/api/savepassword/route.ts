@@ -8,10 +8,10 @@ const COLLECTION_NAME = "passwords";
 
 export async function POST(request: NextRequest) {
     try {
-        const { username, siteUrl, password, key } = await request.json();
+        const { username, site, password, key } = await request.json();
         const { userId } = await auth();
 
-        if (!username || !siteUrl || !password || !key || !userId) {
+        if (!username || !site || !password || !key || !userId) {
             return NextResponse.json({
                 message: 'Data is required',
                 success: false
@@ -20,10 +20,10 @@ export async function POST(request: NextRequest) {
 
         const encryptedPassword = pass.encrypt(password, key);
         const enusername = pass.encrypt(username, key);
-        const ensiteUrl = pass.encrypt(siteUrl, key)
+        const ensite = pass.encrypt(site, key)
 
         const client = await clientPromise;
-        const result = await client.db(DB_NAME).collection(COLLECTION_NAME).insertOne({ userId, username: enusername, siteUrl: ensiteUrl, password: encryptedPassword })
+        const result = await client.db(DB_NAME).collection(COLLECTION_NAME).insertOne({ userId, username: enusername, site: ensite, password: encryptedPassword })
 
         return NextResponse.json({
             message: 'Your password has been saved successfully',

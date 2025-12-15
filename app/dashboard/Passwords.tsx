@@ -58,7 +58,7 @@ const Passwords = ({ setFormData , passwords, setpasswords }: { setFormData: Rea
                                                 variant="default"
                                                 size="icon"
                                                 className="p-2 bg-green-600 hover:bg-green-500"
-                                                aria-label={`Actions for ${item.siteUrl} password`}
+                                                aria-label={`Actions for ${item.site} password`}
                                             >
                                                 <Menu className="h-5 w-5" />
                                             </Button>
@@ -93,17 +93,17 @@ const Passwords = ({ setFormData , passwords, setpasswords }: { setFormData: Rea
                                     <div className="w-2/3 p-3 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-center">
                                         <a
                                             href={
-                                                item.siteUrl.startsWith("http")
-                                                    ? item.siteUrl
-                                                    : `https://${item.siteUrl}`
+                                                item.site.startsWith("http")
+                                                    ? item.site
+                                                    : `https://${item.site}`
                                             }
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-blue-600 dark:text-blue-400 hover:underline break-all"
-                                            aria-label={`Visit ${item.siteUrl}`}
+                                            aria-label={`Visit ${item.site}`}
                                         >
                                             {
-                                                item.siteUrl
+                                                item.site
                                                     .replace(/^https?:\/\//, "")
                                                     .split("/")[0]
                                             }
@@ -124,7 +124,7 @@ const Passwords = ({ setFormData , passwords, setpasswords }: { setFormData: Rea
                                             variant="ghost"
                                             size="icon"
                                             onClick={() => handlecopy(item.username)}
-                                            aria-label={`Copy username for ${item.siteUrl}`}
+                                            aria-label={`Copy username for ${item.site}`}
                                             className="ml-2 p-1 h-8 w-8 hover:bg-slate-200 dark:hover:bg-slate-700"
                                         >
                                             <Copy className="h-4 w-4 text-slate-600 dark:text-slate-400" />
@@ -145,7 +145,7 @@ const Passwords = ({ setFormData , passwords, setpasswords }: { setFormData: Rea
                                             variant="ghost"
                                             size="icon"
                                             onClick={() => handlecopy(item.password)}
-                                            aria-label={`Copy password for ${item.siteUrl}`}
+                                            aria-label={`Copy password for ${item.site}`}
                                             className="ml-2 p-1 h-8 w-8 hover:bg-slate-200 dark:hover:bg-slate-700"
                                         >
                                             <Copy className="h-4 w-4 text-slate-600 dark:text-slate-400" />
